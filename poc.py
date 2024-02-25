@@ -14,14 +14,14 @@ def line_intersection(line1, line2):
     x0, y0 = np.linalg.solve(A, b)
     return int(np.round(x0)), int(np.round(y0))
 
-image_path = 'test2.jpg'
+image_path = './testimg/test3.jpg'
 image = cv2.imread(image_path)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-edges = cv2.Canny(gray, 150, 200, apertureSize=3)
+edges = cv2.Canny(gray, 200, 255, apertureSize=3)
 lines = cv2.HoughLines(edges, 1, np.pi / 180, 100)
 main_vanishing_point = None
-coords = []
 intersections = []
+coords = []
 
 if lines is not None:
     for i in range(len(lines)):
